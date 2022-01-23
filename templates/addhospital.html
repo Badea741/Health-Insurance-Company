@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block title %} Add Hospital {% endblock %}
+
+
+{% block head %} <link rel="stylesheet" href="{{url_for('static',filename='addhospital.css')}}">{% endblock %}
+
+{% block content %} 
+<div class="container">
+    <h1>Welcome Admin</h1>
+    <div class="screen">
+        <h6>Add Hospital</h6>
+        <div class="screen__content">
+            <form class="login" action={{url_for('addHospital_db')}} method="POST">
+                <div class="login__field">
+                    <input type="text" class="form-control login__input" id="namehospital" aria-describedby="namehospital" name="namehospital" placeholder="Hospital Name">
+                </div>
+
+                <div class="login__field">
+                    <input type="text" class="form-control login__input" id="addresshospital" name="addresshospital" placeholder="Hospital Address">
+                </div>
+
+                <div>Choose Hospital Plans:</div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Basic" id="check1" name="mycheck">
+                        <label class="form-check-label" for="check1">
+                            Basic
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Premium" id="check2" name="mycheck">
+                        <label class="form-check-label" for="check2">
+                            Premium
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Golden" id="check3" name="mycheck">
+                        <label class="form-check-label" for="check3">
+                            Golden
+                        </label>
+                    </div>
+
+
+                <input class="button login__submit button__text" type="submit">						
+            </form>
+        </div>
+
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>		
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>   
+    {% if request.args.get('response'): %}
+    <div class="response alert alert-secondary" role="alert">{{request.args.get('response')}}</div>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+{% block footer %}  {% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %} 
+{% block title %} Customer Page {% endblock %} 
+
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='customerhome.css')}}">
+{% endblock %} 
+
+
+
+{% block content %}
+<div class="container">
+    <h1>Welcome {{request.args.get('customerName')}}</h1>
+    <a class="btn btn-primary btn-lg" href={{url_for('addDependent',ssn=request.args.get('ssn'))}}>Add Dependant</a>
+    <a class="btn btn-primary btn-lg" href={{url_for('purchasePlan',ssn=request.args.get('ssn'))}}>Purchase A Plan</a>
+    <a class="btn btn-primary btn-lg" href={{url_for('availableHospitals',ssn=request.args.get('ssn'))}}>Available hospitals</a> <!--view hospitals available under there purchased plans-->
+    <a class="btn btn-primary btn-lg" href={{url_for('fileClaim',ssn=request.args.get('ssn'))}}>File Insurance Claim</a>
+    <a class="btn btn-primary btn-lg" href={{url_for('addBeneficiary',ssn=request.args.get('ssn'))}}>Add Beneficiary</a>
+</div>
+{% endblock %} 
+
+
+{% block footer %} {% endblock %}
