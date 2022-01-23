@@ -1,0 +1,16 @@
+:root {
+    --first-color: #c7c5f4;
+    --second-color: #776bcc;
+}
+body {
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--first-color), var(--second-color));
+}
+.response{
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #5d54a4;
+    font-size: 20px;
+  }
