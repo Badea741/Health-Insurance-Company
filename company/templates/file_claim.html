@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block title %} File Claim {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='fileclaim.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome to our company</h1>
+    <div class="screen">
+        <h6>Welcome Customer</h6>
+        <div class="screen__content">
+            <form class="login" action={{url_for('fileClaim_db')}} method='POST'>
+                <div class="login__field">
+                    <input type="text" class="login__input" placeholder="Customer SSN" name="ssncustomer" value={{request.args.get('ssn')}} readonly>
+                </div>
+
+                <div class="login__field">
+                    <input type="text" class="login__input" placeholder="Hospital Name" name="namehospital">
+                </div>
+
+                <div class="login__field">
+                    <input type="number" class="login__input" placeholder="Expense" name="amountexpense" min="0">
+                </div>
+
+                <div class="login__field">
+                    <input type="text" class="login__input" placeholder="Expense Details" name="detailsexpense">
+                </div>
+    
+                    <div class="login__field">
+                    <label for="beneficiaries" style="color: var(--third-color);">Choose Beneficiaries:</label>
+                        <select class="form-select" aria-label="Default select example" id="beneficiaries" name="ssnbeneficiary">
+                            <option value={{request.args.get('ssn')}}>{{request.args.get('ssn')}} , Me</option>
+                        {% for i in range(dependentSsn|length):%}
+                            <option value={{dependentSsn[i]}}>{{dependentSsn[i]}} , {{dependentNames[i]}}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+
+
+                <button class="button login__submit button__text" type="submit">File Claim</button>
+            </form>
+        </div>
+
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>
+    {% if request.args.get('response'): %}
+    <div class="response alert alert-secondary" role="alert">{{request.args.get('response')}}</div>
+    {% endif %}
+</div>
+
+{% endblock %} {% block footer %} {% endblock %}

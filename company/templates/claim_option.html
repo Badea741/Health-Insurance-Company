@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %} Claims {% endblock %}
+
+
+{% block head %} <link rel="stylesheet" href="{{url_for('static',filename='claimoption.css')}}">{% endblock %}
+
+{% block content %} 
+<div class="container">
+    <h1>Select Claims</h1>
+    <div class="row">
+        <div class="col-4">
+            <a class="btn btn-primary btn-lg" href={{url_for('allClaims',ssn=request.args.get('ssn'))}}>All Claims</a>
+        </div>
+        <div class="col-4">
+            <a class="btn btn-primary btn-lg" href={{url_for('unResolvedClaims',ssn=request.args.get('ssn'))}}> Unresolved Claims</a>
+        </div> 
+    </div>
+
+</div>
+{% endblock %}
+
+
+{% block footer %}  {% endblock %}
